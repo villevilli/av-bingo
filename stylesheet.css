@@ -13,6 +13,10 @@ body{
     padding: 20px;
     height: 100%;
 }
+.ticked{
+    border: 2px solid red;
+}
+
 .bingoTile{
     border-radius: 3px;
     box-shadow: lightgray 2px 2px 1px;
