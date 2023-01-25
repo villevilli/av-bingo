@@ -1,5 +1,13 @@
 let bingo = document.getElementById("bingo");
 
+async function main(){
+    bingoSession = localStorage.getItem("bingo");
+    
+    if (bingoSession == null){
+        bingoGenerator()
+            .then(things => things.map(thing => bingo.append(thing)));
+    }
+}
 
 async function bingoGenerator() {
     let bingocard = [];
@@ -21,9 +29,4 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
 }
 
-
-bingoGenerator()
-    .then(things => things.map(thing => bingo.append(thing)));
-
-  
-
+main();
