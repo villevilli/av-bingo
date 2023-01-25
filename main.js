@@ -4,7 +4,7 @@ let bingo = document.getElementById("bingo");
 async function bingoGenerator() {
     let bingocard = [];
     
-    let bingotiles = await (await fetch('/bingo/bingotiles.json')).json();
+    let bingotiles = await (await fetch('bingo/bingotiles.json')).json();
     for(let i = 0; i<25; i++ ){
         bingocard[i] = document.createElement("div");
         let tilenumber = getRandomInt(0, bingotiles.length);
