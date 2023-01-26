@@ -5,14 +5,27 @@ html{
     font-family: Arial, Helvetica, sans-serif;
 }
 body{
+    height: 100%;
+    margin: 0%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+main{
     align-items: center;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     margin: 0;
     padding: 20px;
-    height: 100%;
 }
+
+footer{
+    text-align: end;
+    margin: 10px;
+    align-items: flex-end;
+}
+
 .ticked{
     border: 2px solid red;
 }
@@ -51,6 +64,9 @@ body{
     border: none;
     box-shadow: lightgray 0px 0px 1px 4px;
     cursor: pointer;
+}
+.footerLink{
+    margin-right: 20px;
 }
 
 #resetButton:active{
