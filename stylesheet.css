@@ -27,6 +27,8 @@ body{
     text-align: center;
     font-size: 1rem;
     overflow-wrap: anywhere;
+    cursor: pointer;
+    user-select: none;
 }
 
 #bingo{
@@ -40,9 +42,28 @@ body{
     gap: 4px;
 
 }
+#resetButton{
+    width: 500px;
+    margin-top: 15px;
+    font-size: 1.8rem;
+    padding: 20px;
+    background-color: white;
+    border: none;
+    box-shadow: lightgray 0px 0px 1px 4px;
+    cursor: pointer;
+}
+
+#resetButton:active{
+    box-shadow:lightgray 0px 0px 1px 4px inset;
+    transition-delay: 500ms;
+}
+
 @media screen and (max-width: 900px) {
     #bingo{
         width: 90%;
+    }
+    #resetButton{
+        width: 90% !important;
     }
     .bingoTile{
         font-size: 2.5vw;
