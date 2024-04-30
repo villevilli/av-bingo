@@ -4,16 +4,21 @@ let resetButton = document.getElementById("resetButton");
 let bingoSessionData = []
 let bingoElements = []
 
+const avBingo = "bingo/avBingoTiles.json";
+const kaivariBingo = "bingo/kaivariBingoTiles.json"
+
+const bingoSelector = document.getElementById("bingo_selector");
+
 async function main() {
-    try{
+    try {
         bingoSessionData = JSON.parse(localStorage.getItem("bingo"));
-        if (bingoSessionData == null){
+        if (bingoSessionData == null) {
             throw new Error("Storage is empty!")
         }
-        for(let i = 0; i < 25; i++){
+        for (let i = 0; i < 25; i++) {
             populateElement(i, bingoSessionData[i].text, bingoSessionData[i].ticked)
         }
-    }catch{
+    } catch {
         bingoSessionData = await bingoGenerator();
     }
 
@@ -22,27 +27,42 @@ async function main() {
     bingoRender();
 }
 
-function resetBingo(event){
+function resetBingo(event) {
     localStorage.removeItem("bingo");
     location.reload();
 }
 
-function populateElement(id, title, ticked){
+function populateElement(id, title, ticked) {
     bingoElements[id] = document.createElement("div");
     bingoElements[id].className = "bingoTile";
     bingoElements[id].id = id;
-    bingoElements[id].innerHTML = title;
+    bingoElements[id].textContent = title;
     bingoElements[id].addEventListener("click", bingoClick);
-    if(ticked){
+    if (ticked) {
         bingoElements[id].classList.add("ticked");
     }
+}
+
+async function getBingoJson() {
+    let url;
+
+    switch (bingoSelector.selectedOptions[0].value) {
+        case ("av-bingo"):
+            url = "bingo/avBingoTiles.json"
+            break;
+        case ("kaivari-bingo"):
+            url = "bingo/kaivariBingoTiles.json"
+            break;
+    }
+
+    return fetch(url).then((result) => result.json());
 }
 
 async function bingoGenerator() {
     let bingoCard = [];
     let bingoElements = []
 
-    let bingotiles = await (await fetch('bingo/bingotiles.json')).json();
+    let bingotiles = await getBingoJson();
     for (let i = 0; i < 25; i++) {
         let tilenumber = getRandomInt(0, bingotiles.length);
         bingoCard[i] = {
@@ -63,7 +83,6 @@ function getRandomInt(min, max) {
 
 function bingoClick(event) {
     let targetid = event.target.id;
-    console.log(bingoSessionData[targetid])
 
     if (bingoSessionData[targetid].ticked == true) {
         bingoElements[targetid].classList.remove("ticked")
@@ -72,7 +91,7 @@ function bingoClick(event) {
         bingoElements[targetid].classList.add("ticked")
         bingoSessionData[targetid].ticked = true
     }
-    
+
     localStorage.setItem("bingo", JSON.stringify(bingoSessionData))
 }
 

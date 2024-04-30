@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="stylesheet" href="stylesheet.css">
-        <title>AV - BINGO</title>
-    </head>
-    <body>
-        <main>
-            <h2>AV-Bingo</h2>
-            <div id="bingo"></div>
-            <button id="resetButton">Reset Bingo</button>
-        </main>
-        <footer>
-            <a target="_blank" class="footerLink" href="https://linktr.ee/otisav">Otis av</a>
-            <a target="_blank" class="footerLink" href="https://github.com/villevilli/av-bingo/tree/master">Contribute!</a>
-        </footer>
-    </body>
-    <script src="main.js" type="module"></script>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>BINGO - BINGO</title>
+</head>
+
+<body>
+    <main>
+        <h2>Bingo</h2>
+        <div id="bingo"></div>
+        <button id="resetButton">Reset Bingo</button>
+        <div class="bingoSelector">
+            <label for="bingo_selector">Choose Your Bingo!</label>
+            <select name="bingo_selector" id="bingo_selector">
+                <option value="av-bingo">AV-Bingo</option>
+                <option value="kaivari-bingo">Kaivari Bingo</option>
+            </select>
+        </div>
+
+    </main>
+    <footer>
+        <a target="_blank" class="footerLink" href="https://linktr.ee/otisav">Otis av</a>
+        <a target="_blank" class="footerLink" href="https://github.com/villevilli/av-bingo/tree/master">Contribute!</a>
+    </footer>
+</body>
+<script src="main.js" type="module"></script>
+
 </html>
